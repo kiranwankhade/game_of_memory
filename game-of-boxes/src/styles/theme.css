@@ -1,0 +1,35 @@
+:root {
+  --bg: #f8f9fa;
+  --text: #212529;
+  --primary: #2276f5;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #ffffff;
+  --primary: #0dcaf0;
+}
+
+[data-theme="blue"] {
+  --bg: #e7f1ff;
+  --text: #002b5c;
+  --primary: #0d6efd;
+}
+
+[data-theme="purple"] {
+  --bg: #f3e8ff;
+  --text: #3b0764;
+  --primary: #9333ea;
+}
+
+[data-theme="neon"] {
+  --bg: #000000;
+  --text: #39ff14;
+  --primary: #ff00ff;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
