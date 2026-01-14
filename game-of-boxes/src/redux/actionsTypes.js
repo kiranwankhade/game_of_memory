@@ -1,0 +1,33 @@
+// Load User
+export const LOAD_USER_REQUEST = "LOAD_USER_REQUEST";
+export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
+export const LOAD_USER_FAIL = "LOAD_USER_FAIL";
+
+// Signup
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAIL = "SIGNUP_FAIL";
+
+
+// Login
+export const LOGIN_REQUEST = "LOGIN_REQUEST"
+export const LOGIN_SUCCESS  = "LOGIN_SUCCESS"
+export const LOGIN_FAIL = "LOGIN_FAIL"
+export const LOGOUT = "LOGOUT"
+
+// Game 
+
+export const GAME_SUBMIT_REQUEST = "GAME_SUBMIT_REQUEST"
+export const GAME_SUBMIT_SUCCESS = "GAME_SUBMIT_SUCCESS"
+export const GAME_SUBMIT_FAIL = "GAME_SUBMIT_FAIL"
+
+// Leader Board
+
+export const LEADERBOARD_REQUEST = "LEADERBOARD_REQUEST"
+export const LEADERBOARD_SUCCESS = "LEADERBOARD_SUCCESS"
+export const LEADERBOARD_FAIL = "LEADERBOARD_FAIL"
+
+// Profile
+export const PROFILE_REQUEST = "PROFILE_REQUEST";
+export const PROFILE_SUCCESS = "PROFILE_SUCCESS";
+export const PROFILE_FAIL = "PROFILE_FAIL";

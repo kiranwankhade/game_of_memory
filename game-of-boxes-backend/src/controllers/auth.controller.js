@@ -13,14 +13,15 @@ export const signupEmail = async (req,res) => {
     const exists = await User.findOne({email});
 
     if(exists){
-        return sendResponse({
-            res,
-            status:409,
-            error: "USER_EXITS",
-            message: "User Already Exits"
-        })
+        if(exists.provider === "email") {
+            return sendResponse({
+                res,
+             status: 409,
+                error: "EMAIL_USER_EXISTS",
+                message: "Account already exists with email/password. Please login with email.",
+            });
+        }
     }
-
     const hashed = await bcrypt.hash(password,10);
 
     const user = await User.create({
@@ -46,13 +47,22 @@ export const loginEmail = async(req,res) => {
 
     const user = await User.findOne({email});
 
-    if(!user || user.provider !== "email"){
+    if(!user){
         return sendResponse({
             res,
             status: 404,
             error: "INVALID_CREDENTIALS",
             message: "Invalid credentials",
           });
+    }
+
+    if(user.provider !== "email"){
+        return sendResponse({
+            res,
+            status: 400,
+            error: "WRONG_PROVIDER",
+            message: `Account was created with ${user.provider} login`,
+        });
     }
 
     const match = await bcrypt.compare(password,user.password);
@@ -87,14 +97,15 @@ export const signupGoogle = async (req,res) => {
     const exists = await User.findOne({email});
 
     if(exists){
-        return sendResponse({
-            res,
-            status: 409,
-            error: "USER_EXISTS",
-            message: "Please login",
-          });
+        if(exists.provider === "google") {
+            return sendResponse({
+                res,
+                status: 409,
+                error: "GOOGLE_USER_EXISTS",
+                message: "Account already exists with Google login. Please use Google login or reset password.",
+            });
+        }
     }
-
     const user = await User.create({
         name,
         email,
@@ -122,7 +133,7 @@ export const loginGoogle = async(req,res) => {
 
     const user = await User.findOne({email});
 
-    if(!user){
+    if (!user ) {
         return sendResponse({
             res,
             status: 404,
@@ -131,6 +142,17 @@ export const loginGoogle = async(req,res) => {
           });
     }
 
+    if(user.provider !== "google") {
+        return sendResponse({
+            res,
+            status: 400,
+            error: "WRONG_PROVIDER",
+            message: "Please use email/password login",
+        });
+    }
+
+    user.lastLogin = new Date();
+    await user.save();
 
     sendResponse({
         res,
@@ -138,3 +160,25 @@ export const loginGoogle = async(req,res) => {
         message: "Google Login Successful",
       });
 }
+
+// me
+export const getMe = async (req, res) => {
+    const user = await User.findById(req.userId).select(
+      "name email avatar createdAt"
+    );
+  
+    if (!user) {
+      return sendResponse({
+        res,
+        status: 404,
+        error: "USER_NOT_FOUND",
+        message: "User not found",
+      });
+    }
+  
+    sendResponse({
+      res,
+      data: user,
+      message: "User fetched",
+    });
+  };

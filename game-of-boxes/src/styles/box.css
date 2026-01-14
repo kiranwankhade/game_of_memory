@@ -1,0 +1,61 @@
+.game-grid-main {
+    
+    display: grid;
+    gap: 10px;
+    margin: 0 auto;
+  }
+  
+  .game-box {
+    aspect-ratio: 1;
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(128, 128, 128, 0.05);
+  }
+  
+  .box-flash {
+    background: var(--primary) !important;
+    box-shadow: 0 0 15px var(--primary);
+    transform: scale(0.95);
+  }
+  
+  .box-correct {
+    background: #28a745 !important; 
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+    transform: scale(0.95);
+  }
+  
+  .box-wrong {
+    background: #ff4d4d !important; 
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
+    animation: shake 0.3s ease-in-out;
+  }
+  
+  .repeat-icon-btn {
+    padding: 10px;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  
+  .repeat-icon-btn:hover:not(:disabled) {
+    transform: rotate(45deg);
+    background: rgba(128, 128, 128, 0.1);
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  
+  .status-badge.memorize { background: var(--primary); color: white; }
+  .status-badge.play { background: #6c757d; color: white; }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
