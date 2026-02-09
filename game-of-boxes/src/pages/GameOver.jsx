@@ -40,6 +40,7 @@ export default function GameOver() {
   // Auto-save for logged-in users
   useEffect(() => {
     if (!user || !token) return;
+   
     if (hasSaved.current) return;
     
     const gameData = { score, level, accuracy };
@@ -54,14 +55,23 @@ export default function GameOver() {
   }, [user, token, score, level, accuracy, dispatch]);
 
   useEffect(() => {
-    if (user && success) {
-      toast.success("🎉 Score saved to leaderboard!");
-      setShowScore(true);
+    if (!user) return;
+  
+    console.log('UseEffect success:', success)
+    if (success) {
+      console.log('success:', success)
+      toast.success("🎉 Score saved to leaderboard!", {
+        toastId: "score-saved",
+      });
     }
-    if (user && error) {
-      toast.error(error);
+  
+    if (error) {
+      toast.error(error, {
+        toastId: "score-error",
+      });
     }
   }, [success, error, user]);
+  
 
   // Score display animation
   useEffect(() => {

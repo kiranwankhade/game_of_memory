@@ -29,14 +29,16 @@ export default function authReducer(state = initialState, action) {
     case LOGIN_SUCCESS:
     case SIGNUP_SUCCESS:
       return {
+        ...state,
         loading: false,
         user: action.payload.user,
-        token: action.payload.token,
+        token: action.payload.token || state.token,
         error: null,
       };
 
     case LOAD_USER_SUCCESS:
       return {
+        ...state,         
         loading: false,
         user: action.payload,
         error: null,

@@ -83,7 +83,7 @@ const Profile = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="visual-section w-100">
+          {/* <div className="visual-section w-100">
             <h5 className="mb-3">Recent Games</h5>
 
             {scores.length === 0 ? (
@@ -111,6 +111,42 @@ const Profile = () => {
                 </Card>
               ))
             )}
+          </div> */}
+          {/* RIGHT */}
+          <div className="visual-section w-100">
+            <h5 className="mb-3">Recent Games</h5>
+
+            <div className="recent-games-scroll">
+              {scores.length === 0 ? (
+                <div className="empty-state p-4 text-center">
+                  No games played yet
+                </div>
+              ) : (
+                scores.map((s, i) => (
+                  <Card
+                    key={i}
+                    className="leaderboard-card mb-2 p-2"
+                    style={{ background: "var(--surface)" }}
+                  >
+                    <Row className="align-items-center ">
+                      <Col>
+                        <strong>Score:</strong> {s.score}
+                      </Col>
+                      <Col>
+                        <Badge bg="secondary">Level {s.level}</Badge>
+                      </Col>
+                      <Col className="opacity-7">
+                        {new Date(s.createdAt).toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })}
+                      </Col>
+                    </Row>
+                  </Card>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { generatePattern, getTimeLimit } from "../utils/gameLogic";
 import api from "../utils/api";
 import { ThemeContext } from "../context/ThemeContext";
 import "../styles/home.css";
+import { toast } from "react-toastify";
 
 export default function Game() {
   const user = useSelector((s) => s.auth?.user);
@@ -88,16 +89,16 @@ export default function Game() {
         setTimeout(() => setLevel((prev) => prev + 1), 800);
       }
     } else {
-      setLives((prev) => {
-        const nextLives = prev - 1;
+      // setLives((prev) => {
+      //   const nextLives = prev - 1;
       
-        if (nextLives <= 0) {
-          clearInterval(timerRef.current);
-          setTimeout(handleGameOver, 300);
-        }
+      //   if (nextLives <= 0) {
+      //     clearInterval(timerRef.current);
+      //     setTimeout(handleGameOver, 300);
+      //   }
       
-        return nextLives;
-      });
+      //   return nextLives;
+      // });
       setErrorIndex(index);
 
       if (lives > 1) {
@@ -105,6 +106,7 @@ export default function Game() {
       }
     }
   };
+
 
   const handleTimeUp = () => {
     clearInterval(timerRef.current);
@@ -114,16 +116,29 @@ export default function Game() {
     setLives((prev) => {
       const nextLives = prev - 1;
   
-      if (nextLives <= 0) {
-        setTimeout(handleGameOver, 300);
-      } else {
-        triggerFlash(2500); // re-memorize
-      }
+      // 🔥 Schedule side-effects OUTSIDE render
+      setTimeout(() => {
+        if (nextLives === 0) {
+          toast.error("💔 Game Over! No lives left", {
+            toastId: "game-over",
+            onClose: () => {
+              handleGameOver();
+            },
+          });
+        } else {
+          toast.info("⏱ Time’s up! One life lost — try again ...!!", {
+            toastId: "life-lost",
+            onClose: () => {
+              triggerFlash(2500);
+            },
+          });
+          
+        }
+      }, 0);
   
       return nextLives;
     });
   };
-  
 
   const handleGameOver = async () => {
     const correctClicks = score / 10;

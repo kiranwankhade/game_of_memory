@@ -14,12 +14,12 @@ export const submitGame = (token, data) => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     dispatch({ type: GAME_SUBMIT_SUCCESS });
-    toast.success("Progress Saved!");
+    // toast.success("Progress Saved!");
   } catch (err) {
     dispatch({
       type: GAME_SUBMIT_FAIL,
       payload: err.response?.data?.message || "Game submit failed",
     });
-    toast.error(err.response?.data?.message);
+    // toast.error(err.response?.data?.message);
   }
 };

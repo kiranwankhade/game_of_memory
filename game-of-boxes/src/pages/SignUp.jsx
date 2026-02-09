@@ -8,7 +8,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import { ThemeContext } from "../context/ThemeContext";
 import "../styles/home.css"; 
 import { submitGame } from "../redux/gameActions";
-import User from "../../../game-of-boxes-backend/src/models/User";
 
 export default function Signup() {
   const dispatch = useDispatch();

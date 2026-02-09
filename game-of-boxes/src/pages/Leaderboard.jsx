@@ -84,7 +84,7 @@ const Leaderboard = () => {
                     {item.userId?.name || "Anonymous Player"}
                   </h5>
                   <span className="text-var(--text) small">
-                    Level {item.level || 0}
+                    Level {item.maxLevel || 0}
                   </span>
                 </div>
 

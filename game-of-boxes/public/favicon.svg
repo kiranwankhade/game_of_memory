@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Top Left -->
+  <rect x="5" y="5" width="40" height="40" rx="10" fill="#6366f1" />
+  
+  <!-- Top Right -->
+  <rect x="55" y="5" width="40" height="40" rx="10" fill="#6366f1" fill-opacity="0.4" />
+  
+  <!-- Bottom Left -->
+  <rect x="5" y="55" width="40" height="40" rx="10" fill="#ff477e" />
+  
+  <!-- Bottom Right -->
+  <rect x="55" y="55" width="40" height="40" rx="10" fill="#06d6a0" />
+  
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="10" fill="white" />
+</svg>

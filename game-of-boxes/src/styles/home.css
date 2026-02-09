@@ -361,8 +361,74 @@
   }
 
 
+  /* Loader */
+
+  /* Base squares */
+.game-logo-color-loader .sq {
+  fill: rgba(255, 255, 255, 0.15);
+  animation: square-cycle 1.6s infinite ease-in-out;
+}
+
+/* Individual delays */
+.game-logo-color-loader .sq-1 {
+  animation-delay: 0s;
+}
+.game-logo-color-loader .sq-2 {
+  animation-delay: 0.2s;
+}
+.game-logo-color-loader .sq-3 {
+  animation-delay: 0.4s;
+}
+.game-logo-color-loader .sq-4 {
+  animation-delay: 0.6s;
+}
+
+/* Active color cycle */
+@keyframes square-cycle {
+  0% {
+    fill: var(--primary);
+    opacity: 0.9;
+  }
+  25% {
+    fill: #ff477e;
+    opacity: 0.9;
+  }
+  50% {
+    fill: #06d6a0;
+    opacity: 0.9;
+  }
+  75% {
+    fill: var(--primary);
+    opacity: 0.4;
+  }
+  100% {
+    fill: var(--primary);
+    opacity: 0.2;
+  }
+}
+
+/* Center dot pulse */
+.loader-center-dot {
+  fill: white;
+  animation: center-breathe 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes center-breathe {
+  0%,
+  100% {
+    r: 9;
+    opacity: 0.6;
+  }
+  50% {
+    r: 12;
+    opacity: 1;
+  }
+}
+
+
   .leaderboard-card {
-    width: 75%;
+    width: 97%;
     border-radius: 15px;
     transition: transform 0.2s ease;
     border: 1px solid rgba(128, 128, 128, 0.1);
@@ -454,6 +520,35 @@
   flex-direction: column;
   justify-content: center;
 }
+
+
+.recent-games-scroll {
+  max-height: 380px;          /* adjust as needed */
+  overflow-y: auto;
+  padding-right: 0px;
+}
+
+
+/* Chrome, Edge, Safari */
+.recent-games-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.recent-games-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.recent-games-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 120, 120, 0.35);
+  border-radius: 10px;
+}
+
+.recent-games-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(120, 120, 120, 0.55);
+}
+
+
+
 
 
 /* --- Responsive Breakpoints --- */

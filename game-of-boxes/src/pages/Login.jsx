@@ -40,6 +40,7 @@ export default function Login() {
       toast.error(error);
     }
   }, [error]);
+  
   const submitHandler = (e) => {
     e.preventDefault();
     const { email, password } = e.target;

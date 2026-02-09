@@ -20,6 +20,7 @@ export const LOGOUT = "LOGOUT"
 export const GAME_SUBMIT_REQUEST = "GAME_SUBMIT_REQUEST"
 export const GAME_SUBMIT_SUCCESS = "GAME_SUBMIT_SUCCESS"
 export const GAME_SUBMIT_FAIL = "GAME_SUBMIT_FAIL"
+export const GAME_SUBMIT_RESET = "GAME_SUBMIT_RESET";
 
 // Leader Board
 

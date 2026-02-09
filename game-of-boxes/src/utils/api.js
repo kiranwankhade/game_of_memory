@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://game-of-memory-4k8z.onrender.com",
 });
 
 export default API;
