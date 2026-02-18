@@ -1,0 +1,85 @@
+.app-navbar {
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.theme-btn {
+  height: 36px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+/* Hover without breaking theme */
+.theme-btn:hover {
+  filter: brightness(1.1);
+}
+
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--primary);
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--primary);
+  transition: 0.2s ease;
+}
+
+.login-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Small mobile */
+@media (max-width: 576px) {
+  /* Logo text hidden (handled in JSX but safety) */
+  .app-navbar .navbar-brand span:last-child {
+    display: none;
+  }
+
+  /* Theme smaller */
+  .theme-btn {
+    padding: 4px 8px;
+  }
+
+  /* User smaller */
+  .user-pill {
+    padding: 4px 8px;
+  }
+
+  /* Remove extra gap to prevent overflow */
+  .app-navbar .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .theme-btn {
+    padding: 4px 10px;
+  }
+
+  .user-pill {
+    padding: 4px 10px;
+  }
+}
+
+.navbar,
+.navbar .container {
+  max-width: 100%;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

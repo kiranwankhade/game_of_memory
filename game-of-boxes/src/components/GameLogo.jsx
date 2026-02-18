@@ -2,6 +2,7 @@ import React from 'react';
 import "../styles/home.css"
 
 const sizeMap = {
+  xs:'30px',
   sm: "60px",
   md: "100px",
   lg: "140px",

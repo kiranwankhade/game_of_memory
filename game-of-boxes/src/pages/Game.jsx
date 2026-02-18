@@ -89,16 +89,6 @@ export default function Game() {
         setTimeout(() => setLevel((prev) => prev + 1), 800);
       }
     } else {
-      // setLives((prev) => {
-      //   const nextLives = prev - 1;
-      
-      //   if (nextLives <= 0) {
-      //     clearInterval(timerRef.current);
-      //     setTimeout(handleGameOver, 300);
-      //   }
-      
-      //   return nextLives;
-      // });
       setErrorIndex(index);
 
       if (lives > 1) {

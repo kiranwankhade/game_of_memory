@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authActions";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSwitcher, { getBtnStyle } from "./ThemeSwitcher";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/navbar.css";
+import { GameLogo } from "./GameLogo";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function AppNavbar() {
   const dispatch = useDispatch();
   const { user } = useSelector((s) => s.auth);
   const navigate = useNavigate();
+
+  const { theme } = useContext(ThemeContext);
+
+  const userStyle = getBtnStyle(theme);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -30,33 +37,54 @@ export default function AppNavbar() {
         <Navbar.Brand
           as={Link}
           to="/"
-          className="fw-bold fs-4"
-          style={{ color: "var(--primary)" }}
+          className="fw-bold fs-5 d-flex align-items-center gap-2 m-0"
         >
-          ✦ Game of Boxes
+          <GameLogo size="xs" />
+          <span
+            className="d-none d-sm-inline"
+            style={{ color: "var(--primary)" }}
+          >
+            {" "}
+            Game of Boxes
+          </span>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <div className="d-flex align-items-center gap-2 ms-auto">
+          {user && (
+            <>
+              {/* Theme Button */}
 
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-          className="justify-content-end gap-3"
-        >
-          {user ? <ThemeSwitcher /> : <></>}
+              <div className="theme-pill d-flex align-items-center">
+                {" "}
+                <ThemeSwitcher />{" "}
+              </div>
 
-          <Nav className="align-items-center gap-2">
-            {user ? (
+              {/* User Dropdown */}
               <Dropdown align="end">
                 <Dropdown.Toggle
-                  variant="none"
-                  className="d-flex align-items-center gap-2 border-0"
-                  style={{ color: "var(--text)" }}
+                  className="user-pill d-flex align-items-center gap-2"
+                  style={{
+                    backgroundColor: userStyle.bg,
+                    color: userStyle.text,
+                    borderColor: userStyle.bg,
+                  }}
                 >
-                  <FaUserCircle size={24} />
-                  <span className="fw-medium">{user.name}</span>
+                  <FaUserCircle size={18} />
+
+                  {/* Desktop only */}
+                  <span className="d-none d-md-inline">{user.name}</span>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className="shadow border-0 ">
+                <Dropdown.Menu className="shadow-sm border-0 mt-2">
+                  {/* Mobile profile */}
+                  <Dropdown.Item
+                    as={Link}
+                    to="/profile"
+                    className="d-flex align-items-center gap-2"
+                  >
+                    <FaUserCircle /> {user.name}
+                  </Dropdown.Item>
+
                   <Dropdown.Item
                     onClick={handleLogout}
                     className="text-danger d-flex align-items-center gap-2"
@@ -65,21 +93,15 @@ export default function AppNavbar() {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            ) : (
-              <Nav.Link
-                as={Link}
-                to="/login"
-                className="fw-bold px-3 py-2 rounded-pill"
-                style={{
-                  color: "var(--text)",
-                  border: "1px solid var(--primary)",
-                }}
-              >
-                Login
-              </Nav.Link>
-            )}
-          </Nav>
-        </Navbar.Collapse>
+            </>
+          )}
+
+          {!user && (
+            <Link to="/login" className="login-btn text-decoration-none">
+              Login
+            </Link>
+          )}
+        </div>
       </Container>
     </Navbar>
   );
