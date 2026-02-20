@@ -140,4 +140,32 @@ You can deploy the project using the following platforms:
 - Render → [https://game-of-memory-4k8z.onrender.com] 
 
 ### 🗄️ Database  
-- MongoDB Atlas  
+- MongoDB Atlas
+
+## 📸 Screenshots  
+
+### 🏠 Home & Theme
+| Light Mode | Dark Mode |
+|------------|------------|
+|  <img width="1360" height="593" alt="home_web" src="https://github.com/user-attachments/assets/435142d9-eef7-4acb-819a-6eaa1b14fc4d" /> | <img width="1348" height="588" alt="theme" src="https://github.com/user-attachments/assets/a52b2e0d-a709-4f53-9c87-5079aba79a2f" /> |
+
+---
+
+### 🎮 Game & Leaderboard
+| Game Screen | Leaderboard |
+|-------------|-------------|
+|  <img width="1360" height="597" alt="game" src="https://github.com/user-attachments/assets/4b99795c-0335-434c-88a9-02f94e19209c" /> |  <img width="1347" height="598" alt="leaderboard" src="https://github.com/user-attachments/assets/a4c1577f-e840-4ccc-970b-5f18a8e7590d" /> |
+
+---
+
+### 👤 Profile & Authentication
+| Profile | Sign In |
+|---------|---------|
+|<img width="1359" height="607" alt="profile" src="https://github.com/user-attachments/assets/2b316338-3100-4b79-bfca-9c6a695464b4" /> |  <img width="1336" height="596" alt="SignIn" src="https://github.com/user-attachments/assets/5c40f254-5967-41fe-97f7-1755edfe04bf" /> |
+
+---
+
+### ⚡ UI & Notifications
+| Toast Message |
+|---------------|
+|<img width="359" height="78" alt="toast" src="https://github.com/user-attachments/assets/2c13a46c-4ccb-4511-bdec-afd554990eee" /> |
