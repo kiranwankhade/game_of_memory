@@ -49,28 +49,24 @@ Game of Memory is an interactive web application built using the MERN stack. Use
 ✅ Environment-based configuration  
 ✅ Scalable and modular project structure  
 
----
-
 ## 📂 Folder Structure  
-
+```
 game_of_memory/
 │
-├── frontend/
+├── game-of-boxes/
 │   ├── src/
 │   ├── components/
 │   ├── redux/
 │   └── pages/
 │
-├── backend/
+├── game-of-boxes-backend/
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   └── middleware/
 │
 └── README.md
-
-
----
+```
 
 ## ⚙️ Installation & Setup  
 
@@ -82,8 +78,10 @@ cd game_of_memory
 ```
 
 ### 2️⃣ Setup Backend
-cd backend
+```
+cd game-of-boxes-backend
 npm install
+```
 
 #### Create a .env file inside the backend:
 ```
@@ -97,3 +95,49 @@ GOOGLE_CLIENT_ID=your_google_client_id
 ```
 npm run dev
 ```
+
+### 3️⃣ Setup Frontend
+```
+cd game-of-boxes
+npm install
+```
+
+
+#### Create a .env file inside the backend:
+```
+VITE_API_URL=http://localhost:5000
+VITE_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+#### Run frontend:
+```
+npm run dev
+```
+
+## 🔐 Environment Variables  
+
+This project uses `.env` files for security and configuration. Do not commit these files to version control.
+
+## 📊 API Highlights  
+
+The backend provides RESTful APIs for:
+- User Authentication (Signup, Login, Logout)
+- Google OAuth Authentication  
+- JWT-based Authorization  
+- Protected Routes  
+- Secure Password Hashing  
+- User Session Handling  
+- Game Logic and Data Management  
+
+## 📦 Deployment  
+
+You can deploy the project using the following platforms:
+
+### 🌐 Frontend  
+- Vercel → [https://game-of-boxes.vercel.app/]
+
+### ⚙️ Backend  
+- Render → [https://game-of-memory-4k8z.onrender.com] 
+
+### 🗄️ Database  
+- MongoDB Atlas  
